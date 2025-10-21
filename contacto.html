@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto – ISFT Nº240</title>
+<!-- 🔹 FAVICON -->
+<link rel="icon" href="imagenes/isft.png" type="image/x-icon">
+ <link rel="stylesheet" href="css/responsive.css">
+<style>
+:root{
+  --blue-primary:#001D8E;
+  --blue-light:#1540E8;
+  --blue-soft:#E4ECFF;
+  --white:#ffffff;
+}
+
+/* 🔹 Reset general */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-size:16px;
+}
+
+body{
+  color:#000;
+  background:#ffffff;
+  overflow-x:hidden;
+}
+
+/* 🔵 NAV */
+nav{
+  background:var(--blue-primary);
+  height:72px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:34px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  box-shadow:0 2px 15px rgba(0,0,0,.35);
+}
+nav a{
+  color:var(--blue-soft);
+  font-weight:700;
+  text-decoration:none;
+  font-size:1rem;
+  padding:10px 18px;
+  border-radius:12px;
+  transition:all .25s ease;
+}
+nav a:hover,
+nav a.active{
+  background:rgba(255,255,255,.15);
+  color:#fff;
+}
+
+/* 🔹 Para permitir posicionamiento dentro del nav */
+nav {
+  position: relative; /* Clave para que el botón se alinee al nav */
+}
+
+/* 🔹 Posición del botón en la barra */
+.nav-right {
+  position: absolute;
+  right: 40px;
+  top: -8%;                /* ajustá si querés subirlo o bajarlo */
+  transform: translateY(-50%);
+  z-index: 9999;           /* 🔹 fuerza al botón a estar por encima del nav */
+}
+/* 🔹 Hace que toda la barra y el botón bajen juntos al hacer scroll */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-right {
+  position: fixed;
+  top: 35px;       /* 🔹 podés ajustar este valor si querés subir o bajar el botón */
+  right: 40px;
+  z-index: 1100;
+}
+
+/* 🔹 Evita que el contenido quede tapado por la barra */
+body {
+  padding-top: 80px;
+}
+
+
+/* 🔹 Estilo del botón */
+.ir-inicio-btn {
+  background: #1540E8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 14px;    /* 🔸 menos alto y más angosto */
+  font-size: 0.85rem;   /* 🔸 texto más pequeño */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.ir-inicio-btn:hover {
+  background: #1E5CFF;
+  transform: scale(1.05);
+}
+
+
+/* 🏫 HERO */
+/* 🔹 Fuerza la posición vertical del fondo del header */
+header.hero {
+  background-position: center 30% !important; /* 🔸 probá 0% (más arriba) o 80% (más abajo) */
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: url("imagenes/caall.png") no-repeat center top;
+  background-size: cover;
+  background-attachment: scroll; /* asegura que se mueva con la página */
+  position: relative;
+}
+
+
+header.hero .overlay{
+  position:relative;
+  z-index:1;
+  padding:30px;
+}
+header.hero h1{
+  font-size:clamp(32px,5vw,50px);
+  font-weight:800;
+  margin-bottom:10px;
+  color:#fff;
+  text-shadow:0 2px 6px rgba(0,0,0,.4);
+}
+header.hero h2{
+  font-size:1.1rem;
+  color:#EAF2FF;
+  max-width:700px;
+  margin:auto;
+  text-shadow:0 1px 4px rgba(0,0,0,.35);
+}
+
+/* 📘 CONTENIDO */
+main{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 20px;
+  text-align:center;
+}
+.contact-card{
+  background:rgba(255,255,255,.9);
+  border:1px solid rgba(0,0,0,.1);
+  border-radius:16px;
+  padding:40px;
+  box-shadow:0 8px 24px rgba(0,0,0,.1);
+  text-align:left;
+  color:#000;
+  line-height:1.6;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.contact-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 28px rgba(0,0,0,.2);
+}
+.contact-card h3{
+  font-size:clamp(22px,3vw,30px);
+  color:#001D8E;
+  margin-bottom:14px;
+}
+.contact-card a{
+  color:#1540E8;
+  text-decoration:none;
+}
+.contact-card a:hover{
+  text-decoration:underline;
+}
+
+/* 🚍 SECCIÓN CÓMO LLEGAR */
+.howto{
+  margin-top:50px;
+  background:#f8faff;
+  padding:40px;
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,.1);
+  text-align:left;
+}
+.howto h3{
+  color:#001D8E;
+  font-size:1.5rem;
+  margin-bottom:15px;
+}
+.howto p{
+  color:#111;
+  line-height:1.6;
+  margin-bottom:12px;
+  font-size:1rem;
+}
+.howto strong{
+  color:#001D8E;
+}
+
+/* 🗺️ MAPA */
+.map-container{
+  display:flex;
+  justify-content:center;
+  margin-top:40px;
+}
+.map-container iframe{
+  width:98%;
+  height:650px;
+  border:0;
+  border-radius:14px;
+  box-shadow:0 8px 26px rgba(0,0,0,.25);
+}
+
+/* ⚙️ FOOTER */
+footer{
+  background:#011863;
+  color:#E2E8FF;
+  text-align:center;
+  padding:40px 10px;
+  font-size:0.95rem;
+}
+footer img{
+  width:100px;
+  height:auto;
+  margin-bottom:10px;
+}
+footer p{
+  margin:10px 0;
+}
+
+/* 💬 Redes sociales flotantes */
+.redes-flotantes {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+.redes-flotantes a {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,.4);
+  transition: transform 0.3s ease;
+  background: var(--blue-primary); /* mismo color que la barra */
+}
+.redes-flotantes a:hover {
+  transform: scale(1.1);
+}
+.redes-flotantes svg {
+  fill: #fff;
+  width: 30px;
+  height: 30px;
+}
+/* 🔹 Corrige el borde blanco entre la barra y la imagen del header */
+header.hero {
+  margin-top: 0;
+  border-top: none;
+}
+
+body {
+  margin: 0;
+}
+
+nav {
+  border-bottom: none; /* si querés quitar el borde inferior de la barra */
+  box-shadow: none; /* opcional: elimina la sombra si se ve como línea */
+}
+/* 🔹 Elimina cualquier espacio o borde entre la barra y el header */
+body, html {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+nav {
+  margin: 0;
+  border: none;
+  box-shadow: none; /* elimina la sombra */
+}
+
+header.hero {
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: relative;
+  top: 0;
+  background-position: center top; /* asegura que el fondo empiece justo arriba */
+}
+
+/* 🔵 Logo ISFT 240 en la barra superior */
+.nav-left {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.nav-left img {
+  height: 60px;       /* podés subir a 60px si querés más grande */
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.nav-left img:hover {
+  transform: scale(1.05);
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- 🔹 NAV -->
+<nav>
+    <div class="nav-left">
+  <a href="index.html">
+    <img src="imagenes/isft.png" alt="Logo ISFT 240">
+  </a>
+</div>
+  <a href="index.html">Inicio</a>
+  <a href="informacion.html">Información</a>
+  <a href="carreras.html">Carreras</a>
+  <a href="preinscripcion.html">Preinscripción</a>
+  <a href="contacto.html" class="active">Contacto</a>
+   <a href="Novedades.html">Novedades y noticias</a>
+</nav>
+
+<!-- 🏫 HERO -->
+<header class="hero">
+  <div class="overlay">
+    <h1>Contacto</h1>
+    <h2>Comunicate con el ISFT Nº 240</h2>
+  </div>
+  <div class="nav-right">
+  <button class="ir-inicio-btn" onclick="window.location.href='index.html'">
+    Ir al Buscador
+  </button>
+</div>
+
+</header>
+
+<!-- 📘 CONTENIDO -->
+<main>
+  <div class="contact-card">
+    <h3>Información de contacto</h3>
+    <p>📞 <strong>+54 9 11 5107-1784</strong></p>
+    <p>📧 <a href="https://mail.google.com/mail/u/0/#inbox?compose=new">isft240@fatlyf.org</a></p>
+    <p>💬 <a href="https://api.whatsapp.com/send?phone=5491151071784" target="_blank">Enviar mensaje por WhatsApp</a></p>
+    <p>📍 Urien 6951, B1763 Virrey del Pino, Provincia de Buenos Aires.</p>
+  </div>
+
+  <!-- 🚍 SECCIÓN CÓMO LLEGAR -->
+  <div class="howto">
+    <h3>🚌 Cómo llegar</h3>
+    <p>El instituto se encuentra sobre <strong>Luz y Fuerza II</strong> en Virrey del Pino. Las siguientes líneas de colectivos pasan por la puerta del ISFT Nº 240:</p>
+    <p>🚏 <strong>Línea 218</strong> – Servicio directo por Ruta 3.</p>
+    <p>🚏 <strong>Línea 622</strong> – Conexión desde González Catán y Virrey del Pino.</p>
+  </div>
+
+  <!-- 🗺️ MAPA -->
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13100.821507584362!2d-58.6551623!3d-34.82592845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcdd8746357151%3A0x72f33688e5484f50!2sInstituto%20Superior%20de%20Formaci%C3%B3n%20T%C3%A9cnica%20N%C2%BA%20240!5e0!3m2!1ses-419!2sar!4v1760419490465!5m2!1ses-419!2sar"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</main>
+
+<!-- ⚙️ FOOTER CON AZUL TRANSPARENTE Y FONDO DE IMAGEN -->
+<footer style="
+  position: relative;
+  background: url('imagenes/luzyfuerza.jpeg') center/cover no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  padding: 60px 8%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  color: #EAF2FF;
+">
+  <!-- Capa azul translúcida -->
+  <div style="
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 29, 142, 0.75); /* 🔹 Nivel de transparencia azul */
+    backdrop-filter: blur(6px); /* 🔹 efecto vidrio */
+    z-index: 0;
+  "></div>
+
+  <!-- Columna 1 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <img src="imagenes/isft.png" alt="Logo ISFT 240" style="width:120px;height:auto;margin-bottom:15px;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Contacto</h3>
+    <p style="margin:6px 0;">📞 11 5107-1784</p>
+    <p style="margin:6px 0;">📍 Urien 6951, B1763 Virrey del Pino, Provincia de Buenos Aires</p>
+    <a href="https://maps.app.goo.gl/yenJ9Jy4hsnuh8cHA" target="_blank"
+       style="display:inline-block;margin-top:10px;color:#9cc4ff;text-decoration:none;
+       border:1px solid #9cc4ff;padding:8px 16px;border-radius:8px;transition:all .3s ease;">
+      ¿Cómo llego?
+    </a>
+  </div>
+
+  <!-- Columna 2 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Sobre el ISFT 240</h3>
+    <p style="margin:4px 0;"><a href="informacion.html" style="color:#cfe1ff;text-decoration:none;">Información General</a></p>
+    <p style="margin:4px 0;"><a href="carreras.html" style="color:#cfe1ff;text-decoration:none;">Carreras</a></p>
+    <p style="margin:4px 0;"><a href="preinscripcion.html" style="color:#cfe1ff;text-decoration:none;">Inscripción</a></p>
+    <p style="margin:4px 0;"><a href="contacto.html" style="color:#cfe1ff;text-decoration:none;">Contacto</a></p>
+  </div>
+
+  <!-- Columna 3 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Enlaces...Próximamente</h3>
+    <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+    <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+     <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+  </div>
+</footer>
+
+<!-- 🔹 LÍNEA INFERIOR -->
+<div style="
+  position: relative;
+  background: url('fondo-footer.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  color: #cfe1ff;
+  text-align: center;
+  padding: 15px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  overflow: hidden;
+">
+  <div style="
+    position: absolute;
+    inset: 0;
+    background: rgb(0, 31, 155);
+    backdrop-filter: blur(6px);
+    z-index: 0;
+  "></div>
+  <p style="margin:0;position:relative;z-index:1;">© 2025 ISFT 240 – Todos los Derechos Reservados</p>
+  
+</div>
+
+
+<!-- 💬 REDES SOCIALES FLOTANTES -->
+<div class="redes-flotantes">
+  <!-- WhatsApp -->
+  <a href="https://api.whatsapp.com/send?phone=5491151071784" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32"><path d="M19.11 17.13c-.27-.13-1.57-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.15.18-.31.2-.58.07-.27-.13-1.12-.41-2.14-1.31-.79-.7-1.32-1.56-1.47-1.82-.15-.27-.02-.42.11-.55.11-.11.27-.29.4-.44.13-.15.18-.24.27-.4.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.46h-.51c-.18 0-.46.07-.7.33-.24.27-.91.89-.91 2.16 0 1.27.94 2.49 1.07 2.66.13.18 1.85 2.82 4.49 3.96.63.27 1.12.42 1.5.54.63.2 1.2.17 1.65.11.5-.07 1.57-.64 1.79-1.26.22-.62.22-1.15.15-1.26-.06-.11-.24-.18-.51-.31zM16.01 3.2c-7.11 0-12.89 5.77-12.89 12.89 0 2.27.6 4.42 1.65 6.27L3 29l6.83-1.79c1.76.96 3.78 1.5 5.94 1.5 7.12 0 12.89-5.77 12.89-12.89S23.13 3.2 16.01 3.2z"/></svg>
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/isft240/?locale=es_LA" target="_blank" aria-label="Facebook">
+    <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.2 3-3.2.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12z"/></svg>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/isft240/" target="_blank" aria-label="Instagram">
+    <svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm4.8-.9a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4z"/></svg>
+  </a>
+</div>
+
+</body>
+</html>

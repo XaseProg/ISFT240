@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carreras – ISFT Nº240</title>
+<!-- 🔹 FAVICON -->
+<link rel="icon" href="imagenes/isft.png" type="image/x-icon">
+ <link rel="stylesheet" href="css/responsive.css">
+<style>
+:root{
+  /* Azul institucional Fundaluz */
+  --fundaluz:#001D8E;
+  --fundaluz-soft:#E4ECFF;     /* texto claro sobre azul */
+  --fundaluz-100:#F2F6FF;      /* celeste muy suave para fondos */
+  --fundaluz-200:#E7EEFF;      /* celeste suave */
+  --white:#ffffff;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+body{background:var(--white);color:#111;line-height:1.6;overflow-x:hidden;}
+
+/* 🔹 NAV */
+nav{
+  background:var(--fundaluz);
+  border-bottom:2px solid var(--fundaluz);
+  height:72px;display:flex;justify-content:center;align-items:center;gap:34px;
+  position:relative
+
+
+  
+}
+nav {
+  background: var(--fundaluz);
+  border-bottom: 2px solid var(--fundaluz);
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 34px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 15px rgba(0,0,0,.15);
+
+}
+
+
+
+nav a{
+  color:var(--fundaluz-soft);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:12px;transition:all .25s ease;
+}
+nav a:hover,nav a.active{background:rgba(255,255,255,.18);color:#fff
+
+}
+
+
+
+/* 🏫 SECCIONES DE CARRERA */
+.carrera{padding:80px 10%;border-bottom:2px solid var(--fundaluz-200);background:var(--white);}
+.carrera h1{
+  color:var(--fundaluz);font-size:clamp(28px,4vw,42px);margin-bottom:25px;text-align:center;letter-spacing:.6px;
+  border-bottom:3px solid var(--fundaluz);display:inline-block;padding-bottom:6px;
+}
+.carrera h2{
+  color:var(--fundaluz);font-size:1.6rem;margin:40px 0 15px;text-align:center;
+  border-bottom:2px solid var(--fundaluz);display:inline-block;padding-bottom:5px;
+}
+.carrera p{color:#222;margin-bottom:14px;font-size:1rem;}
+
+/* 🔷 Recuadro azul destacado */
+.highlight-box{
+  background:var(--fundaluz);color:#fff;padding:24px 28px;border-radius:14px;
+  box-shadow:0 4px 14px rgba(0,0,0,.12);margin:38px auto;max-width:900px;text-align:center;font-size:1.05rem;
+}
+
+/* Bloques texto + imagen */
+.bloque{display:grid;grid-template-columns:1.2fr 1fr;gap:25px;align-items:start;margin-top:20px;}
+.bloque img{width:100%;border-radius:12px;object-fit:cover;box-shadow:0 6px 16px rgba(0,0,0,.18);}
+@media(max-width:900px){.bloque{grid-template-columns:1fr;}}
+
+/* Imagen grande (planes) */
+.img-full{width:100%;border-radius:12px;margin:22px 0;box-shadow:0 4px 12px rgba(0,0,0,.12);border:2px solid var(--fundaluz-200);}
+
+/* Área Ocupacional */
+.area-ocupacional{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:28px;}
+.area-ocupacional div{
+  background:var(--fundaluz-100);border-left:4px solid var(--fundaluz);border-radius:8px;padding:16px 18px;box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+.area-ocupacional div h3{color:var(--fundaluz);font-size:1.05rem;margin-bottom:8px;}
+.area-ocupacional div p{color:#333;font-size:.95rem}
+
+/* Logos diseñadores (sin sombra) */
+.logos-carrera{text-align:center;margin:38px 0;}
+.logos-carrera h3{font-size:1.2rem;letter-spacing:.4px;margin-bottom:22px;color:var(--fundaluz);}
+.logos-grid{display:flex;justify-content:center;align-items:center;gap:60px;flex-wrap:wrap;}
+.logos-grid img{width:200px;height:auto;object-fit:contain;}
+
+/* FOOTER */
+footer{background:var(--fundaluz);color:var(--fundaluz-soft);text-align:center;padding:34px 10px;border-top:3px solid var(--fundaluz);font-size:.95rem;}
+
+/* 🔹 NAV */
+nav {
+  background: var(--fundaluz);
+  border-bottom: 2px solid var(--fundaluz);
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 34px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 15px rgba(0,0,0,.15);
+}
+
+nav a {
+  color: var(--fundaluz-soft);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  transition: all .25s ease;
+}
+
+nav a:hover,
+nav a.active {
+  background: rgba(255,255,255,.18);
+  color: #fff;
+}
+
+/* 🔹 NAV FIJO */
+nav {
+  background: var(--fundaluz);
+  border-bottom: 2px solid var(--fundaluz);
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 34px;
+  position: fixed;     /* ✅ antes estaba sticky */
+  top: 0;
+  left: 0;
+  width: 100%;         /* ✅ asegura que cubra todo el ancho */
+  z-index: 1000;       /* ✅ mantiene la barra al frente */
+  box-shadow: 0 2px 15px rgba(0,0,0,.15);
+}
+
+/* 🔹 BOTÓN FIJO DENTRO DEL NAV */
+.nav-right {
+  position: fixed;     /* ✅ hace que el botón quede fijo también */
+  right: 40px;
+  top: 20px;           /* 🔹 ajustá este valor para subir o bajar el botón */
+  z-index: 1100;       /* 🔹 encima del nav */
+}
+
+/* 🔹 Estilo del botón */
+.ir-inicio-btn {
+  background: #1540E8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 14px;    /* 🔸 menos alto y más angosto */
+  font-size: 0.85rem;   /* 🔸 texto más pequeño */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.ir-inicio-btn:hover {
+  background: #1E5CFF;
+  transform: scale(1.05);
+}
+
+/* 🔵 Logo ISFT 240 en la barra superior */
+.nav-left {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.nav-left img {
+  height: 60px;       /* podés subir a 60px si querés más grande */
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.nav-left img:hover {
+  transform: scale(1.05);
+}
+.descargar-plan {
+  text-align: center;
+  margin: 25px 0 45px;
+}
+
+.descargar-plan a {
+  background: #001D8E;
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.descargar-plan a:hover {
+  background: #1540E8;
+  transform: scale(1.05);
+}
+.ver-plan {
+  text-align: center;
+  margin: 25px 0 45px;
+}
+
+.ver-plan a {
+  background: #001D8E;
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.ver-plan a:hover {
+  background: #1540E8;
+  transform: scale(1.05);
+}
+
+.logos-grid a img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logos-grid a img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+</style>
+</head>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Si hay un hash en la URL (#energia o #sistemas)
+  if (window.location.hash) {
+    // Espera un momento para que el contenido cargue completamente
+    setTimeout(() => {
+      const seccion = document.querySelector(window.location.hash);
+      if (seccion) {
+        seccion.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 500); // medio segundo de espera
+  }
+});
+</script>
+<body>
+
+<!-- 🔹 NAV -->
+<nav>
+  <div class="nav-left">
+  <a href="index.html">
+    <img src="imagenes/isft.png" alt="Logo ISFT 240">
+  </a>
+</div>
+  <a href="index.html">Inicio</a>
+  <a href="informacion.html">Información</a>
+  <a href="carreras.html" class="active">Carreras</a>
+  <a href="preinscripcion.html">Preinscripción</a>
+  <a href="contacto.html">Contacto</a>
+   <a href="Novedades.html">Novedades y noticias</a>
+</nav>
+<div class="nav-right">
+  <button class="ir-inicio-btn" onclick="window.location.href='index.html'">
+    Ir al Buscador
+  </button>
+</div>
+
+<!-- 💡 TECNICATURA EN ENERGÍA ELÉCTRICA -->
+<section class="carrera" id="energia">
+  <h1>Tecnicatura Superior en Energía Eléctrica</h1>
+
+ <div class="logos-grid">
+  <a href="https://fatlyf.org/" target="_blank" rel="noopener">
+    <img src="imagenes/federacion.png" alt="Federación Argentina de Trabajadores de Luz y Fuerza">
+  </a>
+  <a href="https://www.ide-ba.org.ar/" target="_blank" rel="noopener">
+    <img src="imagenes/instituto.png" alt="Instituto de Energía de Buenos Aires">
+  </a>
+  <a href="https://fundaluz21.org/" target="_blank" rel="noopener">
+    <img src="imagenes/fundaluzxxi.png" alt="Fundaluz XXI">
+  </a>
+</div>
+
+
+  <h2>Objetivos de la carrera</h2>
+  <div class="bloque">
+    <div>
+      <p>El IDE (Instituto de Energía de la Provincia de Buenos Aires) junto a la FATLyF y Fundaluz XXI impulsaron la creación de la carrera con el fin de capacitar técnicos capaces de desempeñarse en las áreas de transporte y distribución de energía eléctrica.</p>
+      <p>Esta tecnicatura busca formar profesionales con conocimiento técnico, normativo y práctico, promoviendo la actualización constante y la inserción laboral en un sector clave para el desarrollo del país.</p>
+    </div>
+    <img src="imagenes/electricidad.jpg" alt="Imagen sobre energía eléctrica">
+  </div>
+
+  <h2>Prácticas Profesionalizantes</h2>
+  <div class="highlight-box">
+    Las prácticas profesionalizantes permiten integrar la teoría con la realidad laboral del sector energético. Los estudiantes intervienen en proyectos reales, aplicando procedimientos de seguridad, control y mantenimiento en redes eléctricas de media y baja tensión.
+  </div>
+
+  <h2>Plan de Estudios</h2>
+  <img src="imagenes/energiaplan.png" alt="Plan de estudios de la Tecnicatura en Energía Eléctrica" class="img-full">
+
+<!-- 📄 Botón para ver el Plan de Estudios -->
+<div class="ver-plan">
+  <a href="imagenes/pdfs/disenoelectrica.pdf" target="_blank" rel="noopener">
+    👀 Ver Plan de Estudios
+  </a>
+</div>
+
+
+
+  <h2>Área Ocupacional</h2>
+  <div class="area-ocupacional">
+    <div><h3>Servicios Públicos</h3><p>Cooperativas y empresas concesionarias del servicio público de energía.</p></div>
+    <div><h3>Servicios Privados</h3><p>Empresas dedicadas a redes eléctricas de baja y media tensión.</p></div>
+    <div><h3>Investigación y Educación</h3><p>Instituciones que desarrollan innovación tecnológica y capacitación en energía.</p></div>
+    <div><h3>Industrias del Sector</h3><p>Fabricación de equipamiento eléctrico y componentes de distribución.</p></div>
+  </div>
+
+  <h2>Perfil del Graduado</h2>
+  <div class="bloque">
+    <img src="imagenes/graguadoe.jpg" alt="Graduado en energía eléctrica">
+    <div>
+      <p>El Técnico Superior en Energía Eléctrica está capacitado para planificar, ejecutar y supervisar instalaciones eléctricas en media y baja tensión, cumpliendo con las normativas vigentes y priorizando la seguridad y eficiencia energética.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 💻 TECNICATURA EN ANÁLISIS DE SISTEMAS -->
+<section class="carrera" id="sistemas">
+  <h1>Tecnicatura Superior en Análisis de Sistemas</h1>
+
+ <div class="logos-grid">
+  <a href="https://fatlyf.org/" target="_blank" rel="noopener">
+    <img src="imagenes/federacion.png" alt="Federación Argentina de Trabajadores de Luz y Fuerza">
+  </a>
+  <a href="https://fundaluz21.org/" target="_blank" rel="noopener">
+    <img src="imagenes/fundaluzxxi.png" alt="Fundaluz XXI">
+  </a>
+</div>
+
+
+  <h2>Objetivos de la carrera</h2>
+  <div class="bloque">
+    <div>
+      <p>La carrera forma técnicos con sólidos conocimientos en programación, bases de datos y redes informáticas, capaces de analizar, diseñar e implementar sistemas de información eficientes.</p>
+      <p>Se orienta a cubrir la demanda de profesionales en tecnologías de la información, promoviendo la innovación, la lógica de resolución de problemas y la adaptación al cambio tecnológico.</p>
+    </div>
+    <img src="imagenes/analista1.jpg" alt="Imagen sobre análisis de sistemas">
+  </div>
+
+  <h2>Prácticas Profesionalizantes</h2>
+  <div class="highlight-box">
+    Las prácticas permiten al estudiante enfrentarse con proyectos reales de desarrollo de software, administración de redes y gestión de datos, favoreciendo la integración con el entorno laboral y la experiencia profesional temprana.
+  </div>
+
+  <h2>Plan de Estudios</h2>
+  <img src="imagenes/plansistemas.png" alt="Plan de estudios de la Tecnicatura en Análisis de Sistemas" class="img-full">
+  <!-- 🔽 Espacio para descargar el plan de estudios -->
+<div style="text-align:center; margin:25px 0;">
+<div class="ver-plan">
+  <a href="imagenes/pdfs/disenoanalista.pdf" target="_blank" rel="noopener">
+    👀 Ver Plan de Estudios
+  </a>
+</div>
+
+
+  <h2>Área Ocupacional</h2>
+  <div class="area-ocupacional">
+    <div><h3>Organizaciones Públicas o Privadas</h3><p>Implementación de sistemas de información, soporte técnico y desarrollo.</p></div>
+    <div><h3>Consultoría y Auditoría</h3><p>Asesoramiento en seguridad informática, análisis y control de sistemas.</p></div>
+    <div><h3>Emprendimientos</h3><p>Desarrollo de proyectos de software y soluciones tecnológicas innovadoras.</p></div>
+    <div><h3>Investigación y Educación</h3><p>Participación en programas de innovación, docencia y formación técnica.</p></div>
+  </div>
+
+  <h2>Perfil del Graduado</h2>
+  <div class="bloque">
+    <img src="imagenes/graduado.jpg" alt="Graduado en sistemas">
+    <div>
+      <p>El egresado está capacitado para diseñar, implementar y mantener sistemas informáticos, gestionar proyectos de desarrollo y brindar soporte en entornos tecnológicos diversos, actuando bajo estándares de calidad y ética profesional.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ⚙️ FOOTER CON AZUL TRANSPARENTE Y FONDO DE IMAGEN -->
+<footer style="
+  position: relative;
+  background: url('imagenes/luzyfuerza.jpeg') center/cover no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  padding: 60px 8%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  color: #EAF2FF;
+">
+  <!-- Capa azul translúcida -->
+  <div style="
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 28, 141, 0.75); /* 🔹 Nivel de transparencia azul */
+    backdrop-filter: blur(6px); /* 🔹 efecto vidrio */
+    z-index: 0;
+  "></div>
+
+  <!-- Columna 1 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <img src="imagenes/isft.png" alt="Logo ISFT 240" style="width:120px;height:auto;margin-bottom:15px;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Contacto</h3>
+    <p style="margin:6px 0;">📞 11 5107-1784</p>
+    <p style="margin:6px 0;">📍 Urien 6951, B1763 Virrey del Pino, Provincia de Buenos Aires</p>
+    <a href="https://maps.app.goo.gl/yenJ9Jy4hsnuh8cHA" target="_blank"
+       style="display:inline-block;margin-top:10px;color:#9cc4ff;text-decoration:none;
+       border:1px solid #9cc4ff;padding:8px 16px;border-radius:8px;transition:all .3s ease;">
+      ¿Cómo llego?
+    </a>
+  </div>
+
+  <!-- Columna 2 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Sobre el ISFT 240</h3>
+    <p style="margin:4px 0;"><a href="informacion.html" style="color:#cfe1ff;text-decoration:none;">Información General</a></p>
+    <p style="margin:4px 0;"><a href="carreras.html" style="color:#cfe1ff;text-decoration:none;">Carreras</a></p>
+    <p style="margin:4px 0;"><a href="preinscripcion.html" style="color:#cfe1ff;text-decoration:none;">Inscripción</a></p>
+    <p style="margin:4px 0;"><a href="contacto.html" style="color:#cfe1ff;text-decoration:none;">Contacto</a></p>
+  </div>
+
+  <!-- Columna 3 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Enlaces...Próximamente</h3>
+    <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+    <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+     <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+  </div>
+</footer>
+
+<!-- 🔹 LÍNEA INFERIOR -->
+<div style="
+  position: relative;
+  background: url('fondo-footer.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  color: #cfe1ff;
+  text-align: center;
+  padding: 15px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  overflow: hidden;
+">
+  <div style="
+    position: absolute;
+    inset: 0;
+    background: rgb(0, 31, 151);
+    backdrop-filter: blur(6px);
+    z-index: 0;
+  "></div>
+  <p style="margin:0;position:relative;z-index:1;">© 2025 ISFT 240 – Todos los Derechos Reservados</p>
+  
+
+
+
+</body>
+</html>

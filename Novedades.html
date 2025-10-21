@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novedades – ISFT Nº240</title>
+<!-- 🔹 FAVICON -->
+<link rel="icon" href="imagenes/isft.png" type="image/x-icon">
+ <link rel="stylesheet" href="css/responsive.css">
+
+<style>
+:root {
+  --blue-primary:#001D8E;
+  --blue-light:#1540E8;
+  --blue-soft:#E4ECFF;
+  --gray-bg:#f5f7ff;
+  --white:#ffffff;
+}
+
+/* 🔹 Reset general */
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:system-ui,Roboto,Arial,sans-serif;
+}
+
+/* 🔹 Body */
+body {
+  background:var(--gray-bg);
+  color:#001D8E;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* 🔵 NAV */
+nav {
+  background:var(--blue-primary);
+  height:72px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:34px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  padding:0 20px;
+}
+.logo-lyf {
+  position:absolute;
+  left:20px;
+  height:55px;
+  width:auto;
+}
+nav a {
+  color:var(--blue-soft);
+  font-weight:700;
+  text-decoration:none;
+  padding:10px 18px;
+  border-radius:12px;
+  transition:.3s;
+}
+nav a:hover,
+nav a.active {
+  background:rgba(255,255,255,.15);
+  color:#fff;
+}
+/* 🔹 Posición del botón en la barra */
+.nav-right {
+  position: absolute;
+  right: 40px;
+  top: -10.5%;                /* ajustá si querés subirlo o bajarlo */
+  transform: translateY(-50%);
+  z-index: 9999;           /* 🔹 fuerza al botón a estar por encima del nav */
+}
+/* 🔹 BOTÓN FIJO DENTRO DEL NAV */
+.nav-right {
+  position: fixed;     /* ✅ hace que el botón quede fijo también */
+  right: 40px;
+  top: 35px;           /* 🔹 ajustá este valor para subir o bajar el botón */
+  z-index: 1100;       /* 🔹 encima del nav */
+}
+
+
+/* 🔹 Estilo del botón */
+.ir-inicio-btn {
+  background: #1540E8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 14px;    /* 🔸 menos alto y más angosto */
+  font-size: 0.85rem;   /* 🔸 texto más pequeño */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.ir-inicio-btn:hover {
+  background: #1E5CFF;
+  transform: scale(1.05);
+}
+
+
+/* 📰 HERO */
+.hero {
+  background:url("imagenes/b.png") center/cover no-repeat;
+  height:45vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+.hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.55);
+}
+.hero-content {
+  position:relative;
+  z-index:1;
+  text-align:center;
+  color:#fff;
+}
+.hero-content h1 {
+  font-size:clamp(32px,5vw,52px);
+  font-weight:800;
+  text-shadow:0 2px 6px rgba(0,0,0,.6);
+}
+.hero-content p {
+  color:#EAF2FF;
+  margin-top:10px;
+}
+
+/* 🧭 CONTENIDO PRINCIPAL */
+.main-container {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:50px;
+  padding:80px 8%;
+}
+
+/* 🗞️ SECCIÓN DE NOTICIAS */
+.noticias {
+  flex:3;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+}
+.noticia {
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.15);
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+.noticia.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+.noticia img {
+  width:100%;
+  height:190px;
+  object-fit:cover;
+}
+.noticia-content {
+  padding:18px 20px;
+}
+.noticia-content h4 {
+  color:var(--blue-primary);
+  font-size:1.2rem;
+  margin-bottom:8px;
+}
+.noticia-content p {
+  color:#333;
+  font-size:0.95rem;
+}
+
+/* 🔍 SIDEBAR */
+.sidebar {
+  flex:1.2;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.1);
+  padding:25px 20px;
+  height:fit-content;
+  position:sticky;
+  top:100px;
+}
+.sidebar h3 {
+  font-size:1.3rem;
+  color:var(--blue-primary);
+  margin-bottom:15px;
+}
+.sidebar input {
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:1rem;
+  outline:none;
+}
+.sidebar input:focus {
+  border-color:var(--blue-primary);
+}
+.categorias {
+  margin-top:40px;
+}
+.categorias ul {
+  list-style:none;
+}
+.categorias li {
+  margin-bottom:10px;
+  display:flex;
+  justify-content:space-between;
+  color:#001D8E;
+  font-weight:500;
+  cursor:pointer;
+  transition:.2s;
+}
+.categorias li:hover {
+  color:var(--blue-light);
+}
+
+/* 🦶 FOOTER */
+footer {
+  background:#011863;
+  color:#E2E8FF;
+  text-align:center;
+  padding:40px 10px;
+  margin-top:80px;
+}
+
+/* 📱 Responsive */
+@media(max-width:950px) {
+  .main-container {
+    flex-direction:column;
+  }
+  .sidebar {
+    width:100%;
+    position:static;
+  }
+}
+
+/* 🔵 Logo ISFT 240 en la barra superior */
+.nav-left {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.nav-left img {
+  height: 60px;       /* podés subir a 60px si querés más grande */
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.nav-left img:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- 🔵 NAV -->
+<nav>
+ 
+ <div class="nav-left">
+  <a href="index.html">
+    <img src="imagenes/isft.png" alt="Logo ISFT 240">
+  </a>
+</div>
+ 
+
+  <a href="index.html">Inicio</a>
+  <a href="informacion.html">Información</a>
+  <a href="carreras.html">Carreras</a>
+  <a href="preinscripcion.html">Preinscripción</a>
+  <a href="contacto.html">Contacto</a>
+  <a href="Novedades.html" class="active">Novedades y noticias</a>
+</nav>
+
+<!-- 🏫 HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Novedades del ISFT Nº240</h1>
+    <p>Eventos, inscripciones, cursos y actualidad institucional</p>
+  </div>
+   <div class="nav-right">
+  <button class="ir-inicio-btn" onclick="window.location.href='index.html'">
+    Ir al Buscador
+  </button>
+</div>
+
+</section>
+
+<!-- 🗞️ CONTENIDO PRINCIPAL -->
+<div class="main-container">
+  <!-- 📰 Noticias -->
+  <div class="noticias">
+    <div class="noticia">
+      <img src="imagenes/c.png" alt="Inauguración del Chalet">
+      <div class="noticia-content">
+        <h4>Inauguración del Chalet Remodelado</h4>
+        <p>El 23 de octubre se llevará a cabo la inauguración oficial del chalet, un espacio renovado para mejorar la experiencia educativa.</p>
+      </div>
+    </div>
+
+    <div class="noticia">
+      <img src="imagenes/pag.png" alt="Exposición Web ISFT">
+      <div class="noticia-content">
+        <h4>Exposición del nuevo sitio web institucional</h4>
+        <p>El ISFT 240 presentará su nuevo portal,desarrollado con tecnologías modernas por estudiantes de la Tecnicatura en Sistemas.</p>
+      </div>
+    </div>
+
+    <div class="noticia">
+      <img src="imagenes/alumnos31.png" alt="Cursos del CFL">
+      <div class="noticia-content">
+        <h4>Abren las preinscripciones del ISFT Nº240 </h4>
+        <p>Abiertas las Preinscripciones para las 2 carreras disponibles del ISFT Nº240,Tecnicatura Superior en Analisis de Sistemas y Tecnicatura Superior en Energía Eléctrica.</p>
+      </div>
+    </div>
+
+    <div class="noticia">
+      <img src="imagenes/alumnos38.png" alt="Evento educativo">
+      <div class="noticia-content">
+        <h4>Eventos del ISFT Nº240</h4>
+        <p>Charlas, prácticas abiertas y jornadas donde se desarrollan con la participación de ambas instituciones,Fundaluzxxi e ISFT Nº240 </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔍 Sidebar -->
+  <aside class="sidebar">
+    <h3>Buscar</h3>
+    <input type="text" placeholder="Buscar...">
+    
+    <div class="categorias">
+      <h3>Categorías</h3>
+      <ul>
+        <li>Abiertas a la comunidad <span>()</span></li>
+        <li>Tecnicatura en Análisis de Sistemas <span>()</span></li>
+        <li>Tecnicatura en Energía Eléctrica <span>()</span></li>
+        <li>Preinscripciones abiertas <span>()</span></li>
+        <li>Eventos ISFT Nº240<span>()</span></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<!-- ⚙️ FOOTER CON AZUL TRANSPARENTE Y FONDO DE IMAGEN -->
+<footer style="
+  position: relative;
+  background: url('imagenes/luzyfuerza.jpeg') center/cover no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  padding: 60px 8%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  color: #EAF2FF;
+">
+  <!-- Capa azul translúcida -->
+  <div style="
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 29, 142, 0.75); /* 🔹 Nivel de transparencia azul */
+    backdrop-filter: blur(6px); /* 🔹 efecto vidrio */
+    z-index: 0;
+  "></div>
+
+  <!-- Columna 1 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <img src="imagenes/isft.png" alt="Logo ISFT 240" style="width:120px;height:auto;margin-bottom:15px;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Contacto</h3>
+    <p style="margin:6px 0;">📞 11 5107-1784</p>
+    <p style="margin:6px 0;">📍 Urien 6951, B1763 Virrey del Pino, Provincia de Buenos Aires</p>
+    <a href="https://maps.app.goo.gl/yenJ9Jy4hsnuh8cHA" target="_blank"
+       style="display:inline-block;margin-top:10px;color:#9cc4ff;text-decoration:none;
+       border:1px solid #9cc4ff;padding:8px 16px;border-radius:8px;transition:all .3s ease;">
+      ¿Cómo llego?
+    </a>
+  </div>
+
+  <!-- Columna 2 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Sobre el ISFT 240</h3>
+    <p style="margin:4px 0;"><a href="informacion.html" style="color:#cfe1ff;text-decoration:none;">Información General</a></p>
+    <p style="margin:4px 0;"><a href="carreras.html" style="color:#cfe1ff;text-decoration:none;">Carreras</a></p>
+    <p style="margin:4px 0;"><a href="preinscripcion.html" style="color:#cfe1ff;text-decoration:none;">Inscripción</a></p>
+    <p style="margin:4px 0;"><a href="contacto.html" style="color:#cfe1ff;text-decoration:none;">Contacto</a></p>
+  </div>
+
+  <!-- Columna 3 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Enlaces...Próximamente</h3>
+    <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+    <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+     <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+  </div>
+</footer>
+
+<!-- 🔹 LÍNEA INFERIOR -->
+<div style="
+  position: relative;
+  background: url('fondo-footer.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  color: #cfe1ff;
+  text-align: center;
+  padding: 15px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  overflow: hidden;
+">
+  <div style="
+    position: absolute;
+    inset: 0;
+    background: rgba(0,31,155);
+    backdrop-filter: blur(6px);
+    z-index: 0;
+  "></div>
+  <p style="margin:0;position:relative;z-index:1;">© 2025 ISFT 240 – Todos los Derechos Reservados</p>
+ 
+</div>
+<!-- 🎞️ Animación al hacer scroll -->
+<script>
+const noticias = document.querySelectorAll('.noticia');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.3});
+noticias.forEach(n => observer.observe(n));
+</script>
+
+</body>
+</html>

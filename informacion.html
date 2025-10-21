@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Información – ISFT Nº240</title>
+<!-- 🔹 FAVICON -->
+<link rel="icon" href="imagenes/isft.png" type="image/x-icon">
+ <link rel="stylesheet" href="css/responsive.css">
+<style>
+
+:root{
+  --blue-primary:#001D8E;
+  --blue-light:#1540E8;
+  --blue-soft:#E4ECFF;
+  --white:#ffffff;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Roboto,Arial,sans-serif;}
+body{background:var(--blue-primary);color:#fff;line-height:1.6;overflow-x:hidden;}
+/* 🔵 NAV principal */
+nav {
+  background: var(--blue-primary);
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* HERO */
+.hero{
+  height:55vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:url("imagenes/federacion2.png") center/cover no-repeat;
+  position:relative;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.5);
+}
+.hero .content{
+  position:relative;
+  z-index:1;
+  padding:20px;
+}
+.hero h1{
+  font-size:clamp(32px,5vw,52px);
+  font-weight:800;
+  margin-bottom:10px;
+  color:#fff;
+  text-shadow:0 2px 6px rgba(0,0,0,0.6);
+}
+.hero p{
+  font-size:1.2rem;
+  color:#EAF2FF;
+  text-shadow:0 1px 4px rgba(0,0,0,0.5);
+}
+
+/* SECCIONES */
+section{
+  background:#fff;
+  color:#000;
+  padding:70px 10%;
+}
+h2{
+  color:#001D8E;
+  font-size:2rem;
+  margin-bottom:20px;
+  text-align:center;
+}
+p{margin-bottom:15px;}
+
+/* Bloques con imagen */
+.bloque{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:40px;
+  margin-bottom:70px;
+}
+.bloque:nth-child(even){grid-template-columns:1fr 1fr;flex-direction:row-reverse;}
+.bloque img{
+  width:100%;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+.bloque div{text-align:justify;}
+.bloque div h3{
+  color:#001D8E;
+  margin-bottom:10px;
+}
+
+/* 🎠 Slider de fotos del chalet */
+.slider-container{
+  position:relative;
+  max-width:900px;
+  margin:40px auto;
+  overflow:hidden;
+  border-radius:18px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+.slider{
+  display:flex;
+  transition:transform .6s ease;
+}
+.slider img{
+  width:100%;
+  border-radius:18px;
+  object-fit:cover;
+}
+.prev-btn, .next-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,29,142,0.8);
+  color:#fff;
+  border:none;
+  font-size:2rem;
+  padding:8px 16px;
+  border-radius:50%;
+  cursor:pointer;
+  transition:.3s;
+  z-index:10;
+}
+.prev-btn:hover, .next-btn:hover{
+  background:rgba(0,29,142,1);
+}
+.prev-btn{left:15px;}
+.next-btn{right:15px;}
+
+
+/* FOOTER */
+footer{
+  background:#011863;
+  color:#E2E8FF;
+  text-align:center;
+  padding:35px 10px;
+  border-top:2px solid var(--blue-light);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .bloque{grid-template-columns:1fr;}
+  .hero{height:45vh;}
+}
+
+
+
+/* 🔵 Logo fijo arriba a la izquierda */
+.nav-left {
+  position: absolute;
+  top: 10px;
+  left: 25px;
+  z-index: 200;
+}
+
+/* 🔧 Fijar logo en la posición exacta correcta */
+.nav-logo {
+  position: fixed;
+  top: 8px;      /* 🔹 altura exacta igual a la imagen 1 */
+  left: 25px;    /* 🔹 separación perfecta del borde izquierdo */
+  z-index: 200;
+}
+
+.nav-logo img {
+  height: 55px;  /* 🔹 tamaño exacto del logo correcto */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+.nav-left img {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+/* Centro: enlaces */
+.nav-center {
+  display: flex;
+  gap: 34px;
+  justify-content: center;
+  flex: 1;
+}
+
+.nav-center a {
+  color: var(--blue-soft);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  transition: all .25s ease;
+  font-size: 1rem;
+}
+
+.nav-center a:hover,
+.nav-center a.active {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+.nav-right {
+  position: absolute;
+  right: 40px;         /* 🔹 distancia desde el borde derecho */
+  top: 50%;            /* 🔹 centrado vertical */
+  transform: translateY(-50%);
+  z-index: 1100;       /* 🔹 se mantiene visible encima del nav */
+}
+
+.ir-inicio-btn {
+  background: #1540E8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.ir-inicio-btn:hover {
+  background: #1E5CFF;
+  transform: scale(1.05);
+}
+
+/* 🔹 SECCIÓN DE ESPACIOS ISFT 240 */
+.espacios-section {
+  background: #f8faff;
+  color: #001D8E;
+  text-align: center;
+  padding: 80px 10%;
+}
+.espacios-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+}
+
+.botones-espacios {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+.botones-espacios button {
+  background: #1540E8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+.botones-espacios button:hover {
+  background: #1E5CFF;
+  transform: scale(1.05);
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.galeria img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.galeria img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+
+/* 🔹 SECCIONES DE CADA ESPACIO */
+.espacio {
+  background: #fff;
+  color: #111;
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 40px 20px;
+  border-left: 5px solid #001D8E;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.1);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all .6s ease;
+}
+.espacio.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.espacio h3 {
+  color: #001D8E;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+.espacio p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.foto-espacio {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.25);
+  transition: transform .3s ease;
+}
+.foto-espacio:hover {
+  transform: scale(1.03);
+}
+
+/* 🔵 Logo ISFT 240 en la barra superior */
+.nav-left {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.nav-left img {
+  height: 60px;       /* podés subir a 60px si querés más grande */
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.nav-left img:hover {
+  transform: scale(1.05);
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- 🔵 NAV con LOGO, BOTONES CENTRADOS y BUSCADOR DERECHA -->
+<nav>
+  <div class="nav-left">
+
+  </div>
+<div class="nav-left">
+  <a href="index.html">
+    <img src="imagenes/isft.png" alt="Logo ISFT 240">
+  </a>
+</div>
+
+  <div class="nav-center">
+    <a href="index.html">Inicio</a>
+    <a href="informacion.html"class="active">Información</a>
+    <a href="carreras.html">Carreras</a>
+    <a href="preinscripcion.html">Preinscripción</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="Novedades.html">Novedades y noticias</a>
+  </div>
+<div class="nav-right">
+  <button class="ir-inicio-btn" onclick="window.location.href='index.html'">
+    Ir al Buscador
+  </button>
+</div>
+
+  
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="content">
+    <h1>Información General del ISFT Nº 240</h1>
+    <p>Horarios, modalidad, y todo lo que necesitás saber antes de comenzar.</p>
+  </div>
+</section>
+
+
+
+<!-- 🔹 BLOQUES DE CADA ESPACIO -->
+<!-- 🔷 SECCIÓN ESPACIOS ISFT 240 -->
+<section id="espacios" class="espacios-section">
+  <h2>Nuestros Espacios</h2>
+
+  <!-- 🔹 Botones -->
+  <div class="botones-espacios">
+    <button onclick="scrollToSection('kiosco')">Kiosco</button>
+    <button onclick="scrollToSection('laboratorios')">Laboratorios</button>
+    <button onclick="scrollToSection('salones')">Salones</button>
+    <button onclick="scrollToSection('verdes')">Espacios Verdes</button>
+    <button onclick="scrollToSection('chalet')">Chalet</button>
+  
+  </div>
+
+  <!-- 🔹 Galería de imágenes -->
+  <div class="galeria">
+    <img src="imagenes/7.jpeg" alt="Kiosco ISFT 240">
+    <img src="imagenes/1.jpeg" alt="Laboratorio ISFT 240">
+    <img src="imagenes/alumnos25.png" alt="Salones y Aulas ISFT 240">
+    <img src="imagenes/actividadrecre2.png" alt="Espacios Verdes ISFT 240">
+    <img src="imagenes/4.jpeg" alt="Chalet ISFT 240">
+  </div>
+</section>
+
+<!-- 🔹 BLOQUES DE CADA ESPACIO -->
+<section id="kiosco" class="espacio">
+  <h3>Kiosco del Instituto</h3>
+  <p>
+    El kiosco del ISFT Nº240 se encuentra en una zona rodeada de vistas verdes y luminosas. 
+    Es un punto de encuentro diario tanto para estudiantes como para docentes, 
+    quienes aprovechan sus descansos para disfrutar un café o algo para comer.  
+    Los alumnos asisten a lo largo de todo el día —desde la mañana hasta la noche— 
+    según el turno que les corresponda, por lo que el kiosco se mantiene siempre activo 
+    ofreciendo opciones variadas de alimentos, bebidas y meriendas.
+  </p>
+  <img src="imagenes/7.1.jpeg" alt="Kiosco del ISFT 240" class="foto-espacio">
+</section>
+
+<section id="laboratorios" class="espacio">
+  <h3>Laboratorios Tecnológicos</h3>
+  <p>
+    Nuestros laboratorios están equipados con computadoras actualizadas con las últimas versiones de Windows, 
+    y cuentan con todas las herramientas necesarias para el desarrollo de prácticas de las tecnicaturas en 
+    <b>Análisis de Sistemas</b> y <b>Energía Eléctrica</b>.  
+    Disponemos además de <b>impresoras 3D</b>, kits de cableado de red, instrumental de medición y materiales 
+    para realizar actividades tanto teóricas como prácticas dentro del aula taller.
+  </p>
+  <img src="imagenes/alumnos6.jpeg" alt="Laboratorios ISFT 240" class="foto-espacio">
+</section>
+
+<section id="salones" class="espacio">
+  <h3>Aulas Externas del chalet</h3>
+  <p>
+    El instituto cuenta con tres aulas ubicadas fuera del edificio principal (el chalet), 
+    que se utilizan mientras se realizan remodelaciones internas o para dictar materias que no requieren equipamiento tecnológico, 
+    como <b>Inglés</b>, <b>Matemática</b> o <b>Comunicación</b>.  
+    Estas aulas externas están totalmente acondicionadas para ofrecer comodidad y accesibilidad a los estudiantes.
+  </p>
+  <img src="imagenes/alumnos20.png" alt="Aulas del ISFT 240" class="foto-espacio">
+</section>
+
+<section id="verdes" class="espacio">
+  <h3>Espacios Verdes y Naturaleza</h3>
+  <p>
+    El ISFT Nº240 está ubicado en un entorno natural único, con amplios espacios verdes y zonas de descanso al aire libre.  
+    Es habitual encontrarse con animales que forman parte del predio, como <b>capibaras, gansos, ovejas, cabras y varios perritos</b> 
+    que los estudiantes aprecian y cuidan.  
+    Estos espacios ofrecen un ambiente relajado, ideal para estudiar, compartir momentos en los recreos o simplemente 
+    disfrutar del entorno.
+  </p>
+  <img src="imagenes/actividadrecreativa.jpeg" alt="Espacios Verdes ISFT 240" class="foto-espacio">
+</section>
+
+<section id="chalet" class="espacio">
+  <h3>Chalet Principal</h3>
+  <p>
+    El chalet es el corazón del instituto y cuenta con <b>nueve salones totalmente remodelados</b>, 
+    equipados con mobiliario nuevo, sistemas de iluminación eficientes y conexión eléctrica segura.  
+    Es un espacio amplio y moderno donde se dictan la mayoría de las clases prácticas y teóricas, 
+    garantizando un entorno cómodo, accesible y adaptado a las necesidades actuales.  
+    Además, el edificio cumple con todas las normas de seguridad vigentes.
+  </p>
+  <img src="imagenes/alumnos43.png" alt="Chalet ISFT 240" class="foto-espacio">
+</section>
+
+
+
+
+<!-- ⚙️ FOOTER CON AZUL TRANSPARENTE Y FONDO DE IMAGEN -->
+<footer style="
+  position: relative;
+  background: url('imagenes/luzyfuerza.jpeg') center/cover no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  padding: 60px 8%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  color: #EAF2FF;
+">
+  <!-- Capa azul translúcida -->
+  <div style="
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 29, 142, 0.75); /* 🔹 Nivel de transparencia azul */
+    backdrop-filter: blur(6px); /* 🔹 efecto vidrio */
+    z-index: 0;
+  "></div>
+
+  <!-- Columna 1 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <img src="imagenes/isft.png" alt="Logo ISFT 240" style="width:120px;height:auto;margin-bottom:15px;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Contacto</h3>
+    <p style="margin:6px 0;">📞 11 5107-1784</p>
+    <p style="margin:6px 0;">📍 Urien 6951, B1763 Virrey del Pino, Provincia de Buenos Aires</p>
+    <a href="https://maps.app.goo.gl/yenJ9Jy4hsnuh8cHA" target="_blank"
+       style="display:inline-block;margin-top:10px;color:#9cc4ff;text-decoration:none;
+       border:1px solid #9cc4ff;padding:8px 16px;border-radius:8px;transition:all .3s ease;">
+      ¿Cómo llego?
+    </a>
+  </div>
+
+  <!-- Columna 2 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Sobre el ISFT 240</h3>
+    <p style="margin:4px 0;"><a href="informacion.html" style="color:#cfe1ff;text-decoration:none;">Información General</a></p>
+    <p style="margin:4px 0;"><a href="carreras.html" style="color:#cfe1ff;text-decoration:none;">Carreras</a></p>
+    <p style="margin:4px 0;"><a href="preinscripcion.html" style="color:#cfe1ff;text-decoration:none;">Inscripción</a></p>
+    <p style="margin:4px 0;"><a href="contacto.html" style="color:#cfe1ff;text-decoration:none;">Contacto</a></p>
+    <p style="margin:4px 0;"><a href="Novedades.html" style="color:#cfe1ff;text-decoration:none;">Novedades y noticias</a></p>
+    
+  </div>
+
+  <!-- Columna 3 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Enlaces...Próximamente</h3>
+    <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+    <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+     <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+  </div>
+</footer>
+
+<!-- 🔹 LÍNEA INFERIOR -->
+<div style="
+  position: relative;
+  background: url('fondo-footer.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  color: #cfe1ff;
+  text-align: center;
+  padding: 15px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  overflow: hidden;
+">
+  <div style="
+    position: absolute;
+    inset: 0;
+    background: rgba(0,31,155);
+    backdrop-filter: blur(6px);
+    z-index: 0;
+  "></div>
+  <p style="margin:0;position:relative;z-index:1;">© 2025 ISFT 240 – Todos los Derechos Reservados</p>
+
+</div>
+
+
+<script>
+// Animación al hacer scroll
+const blocks = document.querySelectorAll('.bloque');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('visible');}
+  });
+},{threshold:0.3});
+blocks.forEach(b=>observer.observe(b));
+
+// 🎠 Control del slider con flechas
+const slider = document.querySelector('.slider');
+const prev = document.querySelector('.prev-btn');
+const next = document.querySelector('.next-btn');
+let index = 0;
+const slides = document.querySelectorAll('.slider img');
+next.addEventListener('click', () => {
+  index = (index + 1) % slides.length;
+  slider.style.transform = `translateX(-${index * 100}%)`;
+});
+prev.addEventListener('click', () => {
+  index = (index - 1 + slides.length) % slides.length;
+  slider.style.transform = `translateX(-${index * 100}%)`;
+});
+</script>
+
+
+
+
+<script>
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+}
+
+// Efecto animado al hacer scroll
+const observerEspacios = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("visible");
+  });
+});
+document.querySelectorAll(".espacio").forEach(el => observerEspacios.observe(el));
+</script>
+
+</body>
+</html>

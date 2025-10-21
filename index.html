@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.">
+<title>ISFT Nº240</title>
+<!-- 🔹 FAVICON -->
+<link rel="icon" href="imagenes/isft.png" type="image/x-icon">
+<style>
+:root{
+  --blue-primary:#001D8E;
+  --blue-light:#1540E8;
+  --blue-soft:#E4ECFF;
+  --white:#ffffff;
+  --blue-bright:#1E5CFF;
+}
+
+/* 🔹 Reset general */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+
+body{
+  color:#fff;
+  background:var(--blue-primary);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+/* 🔵 NAV */
+nav{
+  background:var(--blue-primary);
+  height:72px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:34px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  padding:0 20px;
+}
+.logo-lyf{
+  position:absolute;
+  left:20px;
+  height:60px;
+  width:auto;
+  object-fit:contain;
+}
+nav a{
+  color:var(--blue-soft);
+  font-weight:700;
+  text-decoration:none;
+  font-size:1rem;
+  padding:10px 18px;
+  border-radius:12px;
+  letter-spacing:0.3px;
+  transition:all .25s ease;
+}
+nav a:hover,
+nav a.active{
+  background:rgba(255,255,255,.15);
+  color:#fff;
+}
+
+/* 🏫 HERO con video de fondo SIN capa oscura */
+header.hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 8%;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* 🎥 Video completamente visible */
+header.hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: none; /* ✅ sin oscurecer el video */
+}
+
+/* ❌ Eliminamos la capa azul */
+header.hero::after {
+  display: none;
+}
+
+/* ✨ Texto encima del video */
+header.hero .overlay {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.5); /* mantiene legible el texto */
+}
+
+header.hero h1 {
+  font-size: clamp(40px, 5vw, 64px);
+  margin-bottom: 10px;
+  font-weight: 800;
+  color: #fff;
+}
+
+header.hero h2 {
+  font-size: clamp(20px, 3vw, 30px);
+  color: #EAF2FF;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+header.hero p {
+  font-size: 1.2rem;
+  color: #F6FAFF;
+}
+
+
+/* 🏢 Empresas Afiliadas */
+.empresas-afiliadas {
+  position: absolute;
+  top: 20px;         /* altura desde la parte superior del hero */
+  right: 40px;       /* margen desde el borde derecho */
+  z-index: 2;        /* para que quede por encima del video */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(0, 29, 142, 0.35); /* azul translúcido */
+  padding: 10px 18px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+.empresas-afiliadas img {
+  height: 120px;          /* 🔹 Aumenta el tamaño del logo */
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.45));
+  transition: transform 0.3s ease;
+}
+
+.empresas-afiliadas img:hover {
+  transform: scale(1.1);  /* 🔹 Pequeño efecto al pasar el mouse */
+}
+
+
+
+
+
+
+/* 🔹 POR QUÉ ESTUDIAR */
+.porque{
+  background:#fff;
+  color:#000;
+  padding:80px 8%;
+  text-align:center;
+}
+.porque h2{
+  color:#001D8E;
+  font-size:2.2rem;
+  margin-bottom:20px;
+}
+.porque p{
+  font-size:1.15rem;
+  max-width:800px;
+  margin:0 auto 18px auto;
+  line-height:1.8;
+}
+.porque img{
+  width:100%;
+  max-width:360px;
+  border-radius:12px;
+  margin:15px;
+}
+.btn-info{
+  background:#001D8E;
+  color:#fff;
+  padding:12px 28px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+  transition:background .3s ease, transform .3s ease;
+  display:inline-block;
+  margin-top:20px;
+  font-size:1rem;
+}
+.btn-info:hover{background:#0029CC; transform:scale(1.05);}
+
+/* 💡 SLIDER */
+.slider{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  width:100%;
+  overflow:hidden;
+}
+.slider div{
+  height:300px;
+  background:#ccc;
+  background-size:cover;
+  background-position:center;
+  transition:transform .4s ease;
+}
+.slider div:hover{transform:scale(1.05);}
+
+/* 📘 TECNICATURAS */
+.carreras{
+  background:#fff;
+  color:#000;
+  padding:80px 8%;
+  text-align:center;
+}
+.carrera{
+  margin-bottom:60px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+  padding:25px;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.carrera:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 28px rgba(0,0,0,.25);
+}
+.carrera img{
+  width:100%;
+  max-width:600px;
+  border-radius:12px;
+  margin-bottom:20px;
+}
+.carrera h2{
+  color:#001D8E;
+  font-size:2rem;
+  margin-bottom:15px;
+}
+.carrera p{
+  font-size:1.1rem;
+  line-height:1.7;
+  max-width:850px;
+  margin:0 auto 18px auto;
+}
+
+/* 🏛️ FUNDALUZ XXI */
+.fundaluz{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background:#001D8E;
+  color:#fff;
+  padding:80px 8%;
+  text-align:center;
+}
+.fundaluz img{
+  width:100%;
+  max-width:600px;
+  border-radius:12px;
+  margin-bottom:25px;
+}
+.fundaluz h2{
+  font-size:2.2rem;
+  margin-bottom:15px;
+}
+.fundaluz p{
+  font-size:1.15rem;
+  line-height:1.8;
+  max-width:850px;
+  margin:0 auto 20px auto;
+}
+.fundaluz .btn-info{
+  background:var(--blue-bright);
+}
+.fundaluz .btn-info:hover{
+  background:#3578FF;
+}
+
+/* 💬 COMENTARIOS NUEVOS */
+.comentarios{
+  background:#fff;
+  color:#000;
+  text-align:center;
+  padding:80px 10%;
+}
+.comentarios h2{
+  color:#001D8E;
+  font-size:2rem;
+  margin-bottom:40px;
+}
+.testimonios-container{
+  display:flex;
+  gap:30px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.testimonio{
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,.15);
+  padding:25px 30px;
+  max-width:330px;
+  text-align:left;
+  opacity:0;
+  transform:translateY(15px);
+  transition:opacity 1s ease, transform 1s ease;
+}
+.testimonio.active{
+  opacity:1;
+  transform:translateY(0);
+}
+.testimonio img{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-right:10px;
+}
+.user-info{
+  display:flex;
+  align-items:center;
+  margin-bottom:10px;
+}
+.user-name{
+  font-weight:700;
+  color:#001D8E;
+}
+.user-role{
+  font-size:0.9rem;
+  color:#666;
+}
+.stars{
+  color:#FFD700;
+  margin-bottom:8px;
+}
+.testimonio p{
+  font-size:0.95rem;
+  color:#333;
+  line-height:1.6;
+}
+
+/* ⚙️ FOOTER */
+footer{
+  background:#011863;
+  color:#E2E8FF;
+  text-align:center;
+  padding:35px 10px;
+}
+footer img{
+  width:100px;
+  height:auto;
+  margin-bottom:10px;
+}
+footer p{margin:8px 0;}
+
+/* 💬 WHATSAPP */
+.wsp{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#25D366;
+  display:grid;
+  place-items:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+  transition:transform .25s ease;
+}
+.wsp:hover{transform:scale(1.1)}
+.wsp svg{fill:#fff;width:30px;height:30px}
+
+/* 🔵 NAV principal */
+nav {
+  background: var(--blue-primary);
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* 🔵 Logo fijo arriba a la izquierda */
+.nav-left {
+  position: absolute;
+  top: 10px;
+  left: 25px;
+  z-index: 200;
+}
+
+.nav-left img {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+/* Centro: enlaces */
+.nav-center {
+  display: flex;
+  gap: 34px;
+  justify-content: center;
+  flex: 1;
+}
+
+.nav-center a {
+  color: var(--blue-soft);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  transition: all .25s ease;
+  font-size: 1rem;
+}
+
+.nav-center a:hover,
+.nav-center a.active {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+/* Derecha: buscador */
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.buscador {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.buscador input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  width: 150px;
+  transition: all .3s ease;
+}
+
+.buscador input:focus {
+  width: 200px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+
+.buscador button {
+  background: #1540E8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.buscador button:hover {
+  background: #1E5CFF;
+  transform: scale(1.05);
+}
+
+
+/* 🔹 SECCIÓN DESTACADOS */
+.destacados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  padding: 60px 10%;
+  background: #ffffff;
+}
+
+.destacado {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.destacado img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.destacado:hover img {
+  transform: scale(1.08);
+}
+
+.destacado .texto {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: rgba(0, 29, 142, 0.85);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  transition: background .3s ease;
+}
+
+.destacado:hover .texto {
+  background: rgba(21, 64, 232, 0.9);
+}
+
+/* 🔵 Logo ISFT 240 en la barra superior */
+.nav-left {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.nav-left img {
+  height: 60px;       /* podés subir a 60px si querés más grande */
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.nav-left img:hover {
+  transform: scale(1.05);
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- 🔵 NAV con LOGO, BOTONES CENTRADOS y BUSCADOR DERECHA -->
+<nav>
+  <div class="nav-left">
+  </div>
+<div class="nav-left">
+  <a href="index.html">
+    <img src="imagenes/isft.png" alt="Logo ISFT 240">
+  </a>
+</div>
+
+  <div class="nav-center">
+    <a href="index.html" class="active">Inicio</a>
+    <a href="informacion.html">Información</a>
+    <a href="carreras.html">Carreras</a>
+    <a href="preinscripcion.html">Preinscripción</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="Novedades.html">Novedades y noticias</a>
+  </div>
+
+  <div class="nav-right">
+    <div class="buscador">
+      <input type="text" id="busqueda" placeholder="Buscar..." />
+      <button id="btnBuscar">🔍</button>
+    </div>
+  </div>
+
+</nav>
+
+<!-- 🏫 HERO con video de fondo -->
+<header class="hero">
+  <video autoplay muted loop playsinline id="videoFondo">
+    <source src="imagenes/video.mp4.mov" type="video/mp4">
+    Tu navegador no soporta videos en HTML5.
+  </video>
+
+  <!-- 🏢 Empresas Afiliadas -->
+<div class="empresas-afiliadas">
+  <!-- Fundaluz XXI -->
+  <a href="https://fundaluz21.org/" target="_blank">
+    <img src="imagenes/logofundaluz.webp" alt="Fundaluz XXI">
+  </a>
+
+  <!-- Federación Luz y Fuerza -->
+  <a href="https://fatlyf.org/" target="_blank">
+    <img src="imagenes/federacion.png" alt="Federación Argentina de Trabajadores de Luz y Fuerza">
+  </a>
+
+  <!-- Gobierno de la Provincia de Buenos Aires -->
+  <a href="https://www.gba.gob.ar/" target="_blank">
+    <img src="imagenes/BA.png" alt="Gobierno de la Provincia de Buenos Aires">
+  </a>
+
+  <!-- FREBA -->
+  <a href="https://www.freba.org.ar/" target="_blank">
+    <img src="imagenes/frebalogo.png" alt="Foro Regional Eléctrico de Buenos Aires">
+  </a>
+
+  <!-- IDE -->
+  <a href="https://www.ide-ba.org.ar/" target="_blank">
+    <img src="/imagenes/IDElogo.png" alt="Instituto de Energía de Buenos Aires">
+  </a>
+</div>
+
+
+  <div class="overlay">
+    <h1>ISFT Nº 240</h1>
+    <h2>Instituto Superior de Formación Técnica · Fundaluz XXI</h2>
+    <p>Formación pública y gratuita orientada al desarrollo tecnológico, con el acompañamiento de la Federación Argentina de Trabajadores de Luz y Fuerza.</p>
+  </div>
+</header>
+
+
+<!-- 🤝 POR QUÉ ESTUDIAR -->
+<section class="porque">
+  <h2>¿Por qué estudiar con nosotros?</h2>
+  <p>Nuestros centros de formación son Oficiales y reconocidos por el Ministerio de Educación. Forman parte del compromiso de Fundaluz XXI con la educación pública y el desarrollo profesional de calidad.</p>
+  <div>
+    <img src="imagenes/institutoo.png" alt="Imagen institucional 1">
+    <img src="/imagenes/instituto2.png" alt="Imagen institucional 2">
+  </div>
+  <a href="contacto.html" class="btn-info">Más información</a>
+</section>
+
+<!-- 💡 SLIDER -->
+<section class="slider">
+  <div style="background-image:url('imagenes/14.jpeg')"></div>
+  <div style="background-image:url('imagenes/alumnos16.jpeg')"></div>
+  <div style="background-image:url('imagenes/alumnos11.jpeg')"></div>
+  <div style="background-image:url('imagenes/alumnos9.jpeg')"></div>
+</section>
+
+<!-- 📘 TECNICATURAS -->
+<section class="carreras">
+  <div class="carrera">
+    <img src="imagenes/alumnos10.jpeg" alt="Espacio para Análisis de Sistemas">
+    <h2>Tecnicatura Superior en Análisis de Sistemas</h2>
+    <p>Formación para el desarrollo de software, administración de redes y seguridad informática. Modalidad presencial · Duración: 3 años · Inicio: Marzo 2026.</p>
+   <a href="carreras.html#sistemas" class="btn-info">Más información</a>
+  </div>
+
+  <div class="carrera">
+    <img src="imagenes/alumnos18.jpeg" alt="Espacio para Energía Eléctrica">
+    <h2>Tecnicatura Superior en Energía Eléctrica</h2>
+    <p>Con orientación en Transporte y Distribución de la Electricidad. Modalidad presencial · Duración: 3 años · Inicio: Marzo 2026.</p>
+   <a href="carreras.html#energia" class="btn-info">Más información</a>
+  </div>
+</section>
+
+
+<!-- 🔹 SECCIÓN DESTACADOS -->
+<section class="destacados">
+  <div class="destacado" onclick="window.location.href='carreras.html'">
+    <img src="imagenes/alumnos24.png" alt="Estudiá en ISFT 240">
+    <div class="texto">
+      <h3>Estudiá<br>en el ISFT 240</h3>
+    </div>
+  </div>
+
+  <div class="destacado" onclick="window.location.href='informacion.html'">
+    <img src="imagenes/4.jpeg" alt="Conocé nuestro instituto">
+    <div class="texto">
+      <h3>Conocé<br>nuestro instituto</h3>
+    </div>
+  </div>
+
+  <div class="destacado" onclick="window.location.href='contacto.html#comentarios'">
+    <img src="imagenes/actividadrecre1.png" alt="Comunidad ISFT 240">
+    <div class="texto">
+      <h3>Comunidad<br>ISFT 240</h3>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- 🏛️ FUNDALUZ XXI -->
+<section class="fundaluz">
+  <img src="imagenes/fundaluz.jpg" alt="Imagen Fundaluz XXI">
+  <h2>Somos el Centro de Desarrollo Social de Luz y Fuerza</h2>
+  <p>Somos una institución pública financiada por la Federación Argentina de Trabajadores de Luz y Fuerza (FATLyF), que lleva adelante el compromiso de brindar una educación gratuita y de calidad.</p>
+  <p>Si tu objetivo es mejorar tu calidad de vida y tener un mejor futuro, esta es la oportunidad que estabas buscando.</p>
+  <a href="contacto.html" class="btn-info">Más información</a>
+</section>
+
+
+<!-- 💬 WHATSAPP (ICONO ORIGINAL RESTAURADO) -->
+<a class="wsp" href="https://api.whatsapp.com/send?phone=5491151071784&text=Hola%2C%20quiero%20hablar%20con%20un%20representante%20de%20la%20instituci%C3%B3n." target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M16.01 3.2c-7.11 0-12.89 5.77-12.89 12.89 0 2.27.6 4.42 1.65 6.27L3 29l6.83-1.79c1.76.96 3.78 1.5 5.94 1.5 7.12 0 12.89-5.77 12.89-12.89S23.13 3.2 16.01 3.2zm7.54 20.43c-1.01 1.01-2.2 1.8-3.53 2.35-1.35.56-2.78.85-4.25.85-1.88 0-3.7-.45-5.32-1.31l-.38-.2-4.05 1.06 1.08-3.95-.25-.41a10.51 10.51 0 0 1-1.6-5.6c0-5.82 4.74-10.56 10.56-10.56s10.56 4.74 10.56 10.56c0 2.82-1.1 5.46-3.12 7.47zM19.11 17.13c-.27-.13-1.57-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.15.18-.31.2-.58.07-.27-.13-1.12-.41-2.14-1.31-.79-.7-1.32-1.56-1.47-1.82-.15-.27-.02-.42.11-.55.11-.11.27-.29.4-.44.13-.15.18-.24.27-.4.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.46h-.51c-.18 0-.46.07-.7.33-.24.27-.91.89-.91 2.16 0 1.27.94 2.49 1.07 2.66.13.18 1.85 2.82 4.49 3.96.63.27 1.12.42 1.5.54.63.2 1.2.17 1.65.11.5-.07 1.57-.64 1.79-1.26.22-.62.22-1.15.15-1.26-.06-.11-.24-.18-.51-.31z"/>
+  </svg>
+</a>
+
+<!-- 💬 COMENTARIOS REALES DE ALUMNOS -->
+<section class="comentarios-reales">
+  <h2>Comentarios de nuestros alumnos💬 </h2>
+  <p class="comentarios-subtitulo">Dejá tu experiencia o valoración sobre el ISFT Nº240</p>
+
+  <!-- 🧾 FORMULARIO -->
+  <div class="form-comentario">
+    <textarea id="comentarioTexto" placeholder="Escribí tu comentario aquí..." required></textarea>
+
+    <div class="rating">
+      <span data-star="1">⭐</span>
+      <span data-star="2">⭐</span>
+      <span data-star="3">⭐</span>
+      <span data-star="4">⭐</span>
+      <span data-star="5">⭐</span>
+    </div>
+
+    <button id="enviarComentario">Enviar comentario</button>
+  </div>
+
+  <!-- 📜 LISTA DE COMENTARIOS -->
+  <div id="listaComentarios" class="lista-comentarios"></div>
+</section>
+
+<style>
+.comentarios-reales {
+  background:#fff;
+  color:#001D8E;
+  padding:80px 10%;
+  text-align:center;
+}
+.comentarios-reales h2 {
+  font-size:2.2rem;
+  margin-bottom:10px;
+}
+.comentarios-subtitulo {
+  color:#555;
+  margin-bottom:40px;
+}
+.form-comentario {
+  background:#EAF1FF;
+  border-radius:12px;
+  padding:25px;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+  max-width:700px;
+  margin:0 auto 40px auto;
+}
+.form-comentario textarea {
+  width:100%;
+  min-height:100px;
+  border:1px solid #cbd5f7;
+  border-radius:8px;
+  padding:12px;
+  resize:none;
+  font-size:1rem;
+  margin-bottom:12px;
+  outline:none;
+}
+.form-comentario textarea:focus {
+  border-color:#001D8E;
+}
+.rating {
+  display:flex;
+  justify-content:center;
+  gap:5px;
+  font-size:1.5rem;
+  cursor:pointer;
+  margin-bottom:15px;
+}
+.rating span:hover,
+.rating span.seleccionado {
+  transform:scale(1.2);
+  color:#FFD700;
+}
+.form-comentario button {
+  background:#001D8E;
+  color:#fff;
+  border:none;
+  padding:10px 24px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .3s ease;
+}
+.form-comentario button:hover {
+  background:#1540E8;
+  transform:scale(1.05);
+}
+
+/* 💬 COMENTARIOS MOSTRADOS */
+.lista-comentarios {
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  align-items:center;
+}
+.comentario-card {
+  background:#f7f9ff;
+  border-left:5px solid #001D8E;
+  padding:18px 20px;
+  border-radius:10px;
+  width:100%;
+  max-width:700px;
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
+  text-align:left;
+  animation: fadeIn .6s ease;
+}
+.comentario-card h4 {
+  margin-bottom:5px;
+  font-weight:700;
+  color:#001D8E;
+}
+.comentario-card small {
+  color:#666;
+  display:block;
+  margin-bottom:8px;
+}
+.comentario-card .stars {
+  color:#FFD700;
+  margin-bottom:6px;
+}
+.comentario-card p {
+  color:#333;
+  font-size:0.95rem;
+}
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(10px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
+
+<script>
+/* -----------------------------
+   Sistema de comentarios locales
+----------------------------- */
+const btnEnviar = document.getElementById('enviarComentario');
+const txtComentario = document.getElementById('comentarioTexto');
+const lista = document.getElementById('listaComentarios');
+const estrellas = document.querySelectorAll('.rating span');
+let puntuacion = 0;
+
+// cargar comentarios guardados
+const comentariosGuardados = JSON.parse(localStorage.getItem('comentariosISFT')) || [];
+renderComentarios(comentariosGuardados);
+
+// seleccionar estrellas
+estrellas.forEach(star => {
+  star.addEventListener('click', () => {
+    puntuacion = star.getAttribute('data-star');
+    estrellas.forEach(s => s.classList.remove('seleccionado'));
+    for (let i = 0; i < puntuacion; i++) {
+      estrellas[i].classList.add('seleccionado');
+    }
+  });
+});
+
+// enviar comentario
+btnEnviar.addEventListener('click', () => {
+  const texto = txtComentario.value.trim();
+  if (texto === '') {
+    alert('Por favor, escribí un comentario.');
+    return;
+  }
+  if (puntuacion === 0) {
+    alert('Seleccioná una cantidad de estrellas.');
+    return;
+  }
+
+  const usuarios = ["userA35","userL92","userF54","userM83","userK21","userT67","userX09","userN81","userZ44"];
+  const usuarioAleatorio = usuarios[Math.floor(Math.random()*usuarios.length)];
+  const fecha = new Date();
+  const fechaHora = fecha.toLocaleString('es-AR', { dateStyle:'short', timeStyle:'short' });
+
+  const nuevoComentario = {
+    usuario: usuarioAleatorio,
+    texto: texto,
+    estrellas: puntuacion,
+    fecha: fechaHora
+  };
+
+  comentariosGuardados.unshift(nuevoComentario); // agregar arriba
+  localStorage.setItem('comentariosISFT', JSON.stringify(comentariosGuardados));
+
+  txtComentario.value = '';
+  puntuacion = 0;
+  estrellas.forEach(s => s.classList.remove('seleccionado'));
+  renderComentarios(comentariosGuardados);
+});
+
+// mostrar comentarios
+function renderComentarios(array) {
+  lista.innerHTML = '';
+  array.forEach(c => {
+    const card = document.createElement('div');
+    card.classList.add('comentario-card');
+    card.innerHTML = `
+      <h4>${c.usuario}</h4>
+      <small>${c.fecha}</small>
+      <div class="stars">${'⭐'.repeat(c.estrellas)}</div>
+      <p>${c.texto}</p>
+    `;
+    lista.appendChild(card);
+  });
+}
+</script>
+
+
+
+
+<!-- ⚙️ FOOTER CON AZUL TRANSPARENTE Y FONDO DE IMAGEN -->
+<footer style="
+  position: relative;
+  background: url('imagenes/luzyfuerza.jpeg') center/cover no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  padding: 60px 8%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  color: #EAF2FF;
+">
+  <!-- Capa azul translúcida -->
+  <div style="
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 29, 142, 0.75); /* 🔹 Nivel de transparencia azul */
+    backdrop-filter: blur(6px); /* 🔹 efecto vidrio */
+    z-index: 0;
+  "></div>
+
+  <!-- Columna 1 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <img src="imagenes/isft.png" alt="Logo ISFT 240" style="width:120px;height:auto;margin-bottom:15px;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Contacto</h3>
+    <p style="margin:6px 0;">📞 11 5107-1784</p>
+    <p style="margin:6px 0;">📍 Urien 6951, B1763 Virrey del Pino, Provincia de Buenos Aires</p>
+    <a href="https://maps.app.goo.gl/yenJ9Jy4hsnuh8cHA" target="_blank"
+       style="display:inline-block;margin-top:10px;color:#9cc4ff;text-decoration:none;
+       border:1px solid #9cc4ff;padding:8px 16px;border-radius:8px;transition:all .3s ease;">
+      ¿Cómo llego?
+    </a>
+  </div>
+
+  <!-- Columna 2 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Sobre el ISFT 240</h3>
+    <p style="margin:4px 0;"><a href="informacion.html" style="color:#cfe1ff;text-decoration:none;">Información General</a></p>
+    <p style="margin:4px 0;"><a href="carreras.html" style="color:#cfe1ff;text-decoration:none;">Carreras</a></p>
+    <p style="margin:4px 0;"><a href="preinscripcion.html" style="color:#cfe1ff;text-decoration:none;">Inscripción</a></p>
+    <p style="margin:4px 0;"><a href="contacto.html" style="color:#cfe1ff;text-decoration:none;">Contacto</a></p>
+  </div>
+
+  <!-- Columna 3 -->
+  <div style="flex:1 1 250px;min-width:230px;position:relative;z-index:1;">
+    <h3 style="color:#fff;font-size:1.2rem;margin-bottom:10px;">Enlaces...Próximamente</h3>
+    <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+    <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+     <p style="margin:4px 0;"><a href="#" style="color:#cfe1ff;text-decoration:none;"></a></p>
+  </div>
+</footer>
+
+<!-- 🔹 LÍNEA INFERIOR -->
+<div style="
+  position: relative;
+  background: url('fondo-footer.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  color: #cfe1ff;
+  text-align: center;
+  padding: 15px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  overflow: hidden;
+">
+  <div style="
+    position: absolute;
+    inset: 0;
+    background: rgba(0,31,155);
+    backdrop-filter: blur(6px);
+    z-index: 0;
+  "></div>
+  <p style="margin:0;position:relative;z-index:1;">© 2025 ISFT 240 – Todos los Derechos Reservados</p>
+ 
+</div>
+
+
+<!-- 💬 WHATSAPP -->
+<a class="wsp" href="https://api.whatsapp.com/send?phone=5491151071784&text=Hola%2C%20quiero%20hablar%20con%20un%20representante%20de%20la%20instituci%C3%B3n." target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M19.11 17.13c-.27-.13-1.57-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.15.18-.31.2-.58.07-.27-.13-1.12-.41-2.14-1.31-.79-.7-1.32-1.56-1.47-1.82-.15-.27-.02-.42.11-.55.11-.11.27-.29.4-.44.13-.15.18-.24.27-.4.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.98-.22-.53-.44-.46-.6-.46h-.51c-.18 0-.46.07-.7.33-.24.27-.91.89-.91 2.16 0 1.27.94 2.49 1.07 2.66.13.18 1.85 2.82 4.49 3.96.63.27 1.12.42 1.5.54.63.2 1.2.17 1.65.11.5-.07 1.57-.64 1.79-1.26.22-.62.22-1.15.15-1.26-.06-.11-.24-.18-.51-.31z"/>
+  </svg>
+</a>
+
+<script>
+const testimonios = document.querySelectorAll('.testimonio');
+let current = 0;
+setInterval(() => {
+  testimonios.forEach((t, i) => t.classList.toggle('active', i === current));
+  current = (current + 1) % testimonios.length;
+}, 5000);
+</script>
+
+
+<script>
+document.getElementById("btnBuscar").addEventListener("click", buscar);
+document.getElementById("busqueda").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") buscar();
+});
+
+function buscar() {
+  const valor = document.getElementById("busqueda").value.toLowerCase().trim();
+  if (!valor) return;
+
+  if (valor.includes("inicio") || valor.includes("home")) {
+    window.location.href = "index.html";
+  } 
+  else if (valor.includes("informacion") || valor.includes("general")) {
+    window.location.href = "informacion.html";
+  } 
+  else if (valor.includes("carrera") || valor.includes("tecnicatura") || valor.includes("sistemas") || valor.includes("electricidad")) {
+    window.location.href = "carreras.html";
+  } 
+  else if (valor.includes("pre") || valor.includes("inscripcion") || valor.includes("inscripción")) {
+    window.location.href = "preinscripcion.html";
+  } 
+  else if (valor.includes("contacto") || valor.includes("telefono") || valor.includes("whatsapp")) {
+    window.location.href = "contacto.html";
+  } 
+  else if (valor.includes("novedad") || valor.includes("noticia") || valor.includes("actualidad")) {
+    window.location.href = "Novedades.html";
+  } 
+  else {
+    alert("No se encontró una sección relacionada con esa búsqueda.");
+  }
+}
+</script>
+
+
+</body>
+</html>

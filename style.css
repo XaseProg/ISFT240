@@ -1,0 +1,176 @@
+:root{
+  --blue-950:#051c3b;
+  --blue-900:#0a2f63;
+  --blue-800:#0f4491;
+  --blue-700:#1558c1;
+  --blue-600:#1b6fe9;
+  --white:#ffffff;
+  --muted:#cfe1ff;
+  --radius:16px;
+  --shadow:0 10px 28px rgba(0,0,0,.25);
+  --shadow-soft:0 6px 18px rgba(2,6,23,.15);
+}
+
+/* ------------------ Reset ------------------ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--white);
+  background:linear-gradient(180deg,var(--blue-900),var(--blue-950));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ------------------ Navegación ------------------ */
+nav{
+  background:rgba(5,28,59,.85);
+  backdrop-filter:blur(10px) saturate(140%);
+  border-bottom:1px solid rgba(219,234,254,.15);
+  padding:14px 0;
+  display:flex;
+  justify-content:center;
+  gap:26px;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+
+nav a{
+  color:#e2ecff;
+  font-weight:700;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:12px;
+  transition:background .2s ease;
+}
+nav a:hover,
+nav a.active{
+  background:rgba(219,234,254,.15);
+}
+
+/* ------------------ Estructura ------------------ */
+main{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 20px;
+  text-align:center;
+}
+
+h1{
+  font-size:clamp(26px,4vw,42px);
+  line-height:1.2;
+  margin-bottom:14px;
+  color:#eaf2ff;
+}
+h2{
+  font-size:clamp(22px,3vw,32px);
+  color:#e6f0ff;
+  margin-bottom:10px;
+}
+p{
+  color:#d6e7ff;
+  line-height:1.6;
+  margin-bottom:16px;
+}
+
+a{
+  color:#bfe0ff;
+}
+a:hover{text-decoration:underline}
+
+/* ------------------ Botones CTA ------------------ */
+.cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(135deg,var(--blue-700),var(--blue-600));
+  color:#fff;
+  padding:10px 16px;
+  border-radius:12px;
+  font-weight:800;
+  border:0;
+  box-shadow:0 10px 22px rgba(27,111,233,.35);
+  text-decoration:none;
+  margin:8px;
+  transition:filter .2s ease;
+}
+.cta:hover{filter:brightness(1.08)}
+
+/* ------------------ Cards / Bloques ------------------ */
+.card{
+  background:linear-gradient(180deg,var(--blue-100),var(--blue-900));
+  border:1px solid rgba(219,234,254,.15);
+  border-radius:var(--radius);
+  padding:24px 26px;
+  margin:20px 0;
+  box-shadow:var(--shadow-soft);
+  text-align:left;
+}
+
+/* ------------------ Footer ------------------ */
+footer{
+  background:linear-gradient(180deg,#061b37,#040f22);
+  border-top:1px solid rgba(219,234,254,.15);
+  padding:40px 0;
+  text-align:center;
+  color:#b9d4ff;
+  margin-top:50px;
+}
+footer a{color:#bfe0ff;text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* ------------------ Botón flotante WhatsApp ------------------ */
+.wsp{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:60;
+  display:inline-grid;
+  place-items:center;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#25D366;
+  box-shadow:0 10px 24px rgba(0,0,0,.3);
+  transition:transform .2s ease;
+}
+.wsp:hover{transform:scale(1.08)}
+.wsp svg{width:34px;height:34px;fill:#fff}
+
+/* ------------------ Responsive ------------------ */
+@media (max-width:700px){
+  nav{flex-wrap:wrap;gap:12px;padding:10px}
+  main{padding:50px 12px}
+  h1{font-size:28px}
+}
+/* ------------------ Encabezados internos ------------------ */
+.hero-interno {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(10,47,99,0.8), rgba(5,28,59,1)),
+              url("codigo.jpg") center/cover no-repeat; /* podés cambiar la imagen */
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,.3);
+}
+
+.hero-interno .overlay {
+  z-index: 1;
+  padding: 20px;
+}
+
+.hero-interno h1 {
+  font-size: clamp(30px, 5vw, 50px);
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.hero-interno p {
+  color: #cfe1ff;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: auto;
+}
